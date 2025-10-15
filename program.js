@@ -62,14 +62,33 @@ function displayBooks(){
         readStatus.innerText = book.hasRead ? "Read already" : "Not read yet";
         divBook.appendChild(readStatus);
 
+        const toggleBtn = document.createElement("button");
+        toggleBtn.innerText = book.hasRead ? "Mark as unread" : "Mark as read";
+        toggleBtn.classList.add("toggleBtn");
+        divBook.appendChild(toggleBtn);
+
+        toggleBtn.addEventListener("click", () => {
+        book.hasRead = !book.hasRead;
+        readStatus.innerText = book.hasRead ? "Read already" : "Not read yet";
+        toggleBtn.innerText = book.hasRead ? "Mark as unread" : "Mark as read";
+        });
+
+
+
         const removeBtn = document.createElement("button");
         removeBtn.innerText = "Remove";
         removeBtn.classList.add("removeBtn");
         divBook.appendChild(removeBtn);
 
         removeBtn.addEventListener("click", () => {
-            divBook.remove();
-        })
+            const index = myLibrary.findIndex(b => b.id === book.id);
+                if (index !== -1) {
+                    myLibrary.splice(index, 1);
+                    }
+                 displayBooks(); //
+        });
+         mainContainer.appendChild(divBook);
+
     }
 }
 
@@ -86,7 +105,7 @@ submitBtn.addEventListener("click", (e) =>{
     const author= authorInput.value;
     const pagesInput = document.querySelector(".pagesInput");
     const pages = pagesInput.value;
-    const hasReadInput = document.querySelector(".hasReadInput");
+    const hasReadInput = document.querySelector(".hasReadCheckbox");
     const hasRead = hasReadInput.checked;
 
     addBookToLibrary(title,author,pages,hasRead);
