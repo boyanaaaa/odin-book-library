@@ -62,7 +62,14 @@ function displayBooks(){
         readStatus.innerText = book.hasRead ? "Read already" : "Not read yet";
         divBook.appendChild(readStatus);
 
+        const removeBtn = document.createElement("button");
+        removeBtn.innerText = "Remove";
+        removeBtn.classList.add("removeBtn");
+        divBook.appendChild(removeBtn);
 
+        removeBtn.addEventListener("click", () => {
+            divBook.remove();
+        })
     }
 }
 

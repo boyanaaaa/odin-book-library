@@ -113,3 +113,14 @@ input{
 .bookPagesp{
     font-size: 1.2rem;
 }
+
+.removeBtn{
+    width: 6vw;
+    height: 3vh;
+    color: #fff;
+    font-size: 1.4vh;
+    font-weight: 500;
+    border-radius: 20px;
+    background-color: var(--brown-color);
+    border: 0;
+}
